@@ -3,5 +3,23 @@
   "extends": [
     "config:best-practices",
     "regexManagers:dockerfileVersions"
+  ],
+  "packageRules": [
+    {
+      "description": "Disable major and minor Golang updates because config-syncer is incompatible with versions greater than 1.17.",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepNames": [
+        "docker.io/library/golang",
+        "library/golang",
+        "golang"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor"
+      ],
+      "enabled": false
+    }
   ]
 }
