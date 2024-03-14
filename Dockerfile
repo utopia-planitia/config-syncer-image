@@ -10,7 +10,7 @@ ENV CONFIG_SYNCER_VERSION=v0.13.2
 
 RUN set -eux; \
     apk upgrade --no-cache; \
-    apk add --no-cache bash ca-certificates-bundle git
+    apk add --no-cache bash git
 
 RUN set -eux; \
     git clone "--branch=${CONFIG_SYNCER_VERSION:?}" --depth=1 https://github.com/config-syncer/config-syncer .
@@ -37,6 +37,4 @@ RUN set -eux; \
 FROM scratch
 USER 65534
 ENTRYPOINT ["/kubed"]
-ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-COPY --from=0 "${SSL_CERT_FILE:?}" "${SSL_CERT_FILE:?}"
 COPY --from=0 /go/bin/kubed /kubed
