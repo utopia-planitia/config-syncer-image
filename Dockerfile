@@ -1,6 +1,6 @@
 # config-syncer v0.13.2 and v0.14.0-rc.0 are incompatible with any Go version greater than 1.20.
 # The reason might be that Go 1.21 changed the package initialization order.
-FROM docker.io/library/golang:1.17.13-alpine
+FROM docker.io/library/golang:1.17.13-alpine@sha256:99ddec1bbfd6d6bca3f9804c02363daee8c8524dae50df7942e8e60788fd17c9
 
 USER 0:0
 WORKDIR /config-syncer
