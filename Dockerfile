@@ -35,6 +35,6 @@ RUN set -eux; \
     /go/bin/kubed version | tee -a /dev/stderr | grep -Fq "${CONFIG_SYNCER_VERSION:?}"
 
 FROM scratch
-USER 65534
+USER 65534:65534
 ENTRYPOINT ["/kubed"]
 COPY --from=0 /go/bin/kubed /kubed
