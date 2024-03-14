@@ -35,7 +35,7 @@ RUN set -eux; \
     /go/bin/kubed version | tee -a /dev/stderr | grep -Fq "${CONFIG_SYNCER_VERSION:?}"
 
 FROM scratch
-USER 65534:65534
+USER 65534
 ENTRYPOINT ["/kubed"]
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 COPY --from=0 "${SSL_CERT_FILE:?}" "${SSL_CERT_FILE:?}"
